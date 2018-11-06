@@ -114,3 +114,140 @@ function isPrime(n) {
   }
   return true;
 }
+
+// Counting Sheep
+// O(n)
+function countSheep(num) {
+  //stopping condition of base case
+  if (num === 0) {
+    console.log('All sheep jumped over the fence');
+  }
+  //this is the recursive case
+  //this will be executed until it reaches base case
+  else {
+    console.log(`${num}: Another sheep jump over the fence`);
+    countSheep(num-1);
+  }
+}
+
+// Array Double
+// O(n)
+function double_all(arr) {
+  if (!arr.length) {
+    return [];
+  }
+  return [arr[0] * 2, ...double_all(arr.slice(1))];
+}
+
+// Reverse String
+// O(n)
+function reverseString(str) {
+  if (str.length < 2) {
+    return str;
+  }
+  return reverseString(str.slice(1)) + str[0];
+}
+
+// Triangular Number
+// O(n)
+function triangle(n) {
+  if (n < 2)
+    return n;
+  return n + triangle(n - 1);
+}
+
+// String Splitter
+// O(n)
+function split(str, sep) {
+  let idx = str.indexOf(sep);
+  if (idx == -1)
+    return [str];
+  //you don't have to return an array, you can return a string as an array of
+  //character
+  //return str;
+  return [str.slice(0, idx)].concat(split(str.slice(idx + sep.length), sep));
+//all these are valid syntax
+//return (str.slice(0,idx) + (split(str.slice(idx + sep.length), sep)))
+//return str.slice(0,idx).concat(split(str.slice(idx + sep.length), sep))
+}
+
+// Binary Representation
+// O(log(n))
+function convertToBinary(num) {
+  if (num>0) {
+    let binary = Math.floor(num%2); //save the reminder in binary
+    //divide the number by 2 and send that to the function again
+    //carry the reminder to the next recursion call
+    return (convertToBinary(Math.floor(num/2))+ binary);
+  } else {
+    return ''; //base case - at some point the divisions will lead to 0
+  }
+}
+
+// Factorial
+// O(n^2) ?
+function factorial(n) {
+  // Base Case - when n is equal to 0, we stop the recursion
+  if (n === 0) {
+    return 1;
+  }
+  // This is our Recursive Case
+  // It will run for all other conditions except when n is equal to 0
+  return n * factorial(n - 1);
+}
+
+// Fibonacci
+// O(2^n)
+function fibonacci(n) {
+  // Base case
+  if (n <= 0) {
+    return 0;
+  }
+  // Base case
+  if (n <= 2) {
+    return 1;
+  }
+  // Recursive case
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Anagrams
+// O(2^n)
+function anagrams(prefix, str) {
+  if (str.length <= 1) {
+    console.log(`The anagram is ${prefix}${str}`);
+  } else {
+    for (let i=0; i<str.length; i++) {
+      let currentLetter = str.substring(i, i+1);
+      let previousLetters = str.substring(0, i);
+      let afterLetters = str.substring(i+1);
+      anagrams(prefix+currentLetter, previousLetters+afterLetters);
+    }
+  }
+}
+
+//Animal Hierarchy
+// O(n^3)
+function traverse(animalHierarchy, parent) {
+  let node = {};
+  animalHierarchy.filter(item => item.parent === parent)
+    .forEach(item => node[item.id] = traverse(animalHierarchy, item.id));
+  return node;
+}
+
+// Organization Chart
+// O(n^2)
+function traverseA(data, depth = 0) {
+  let indent = ' '.repeat(depth * 4);
+  Object.keys(data).forEach(key => {
+    console.log(indent + key);
+    traverseA(data[key], depth + 1);
+  });
+}
+
+function traverseB(node, indent=0) {
+  for (let key in node) {
+    console.log(' '.repeat(indent), key);
+    traverseB(node[key], indent + 4);
+  }
+}
