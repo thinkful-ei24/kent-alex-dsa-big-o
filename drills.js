@@ -1,5 +1,5 @@
 // Even or Odd
-// O(1)
+// O(1) - Same amount of time to run no matter what
 function isEven(value) {
   if (value % 2 == 0) {
     return true;
@@ -9,7 +9,7 @@ function isEven(value) {
 }
 
 // Are you here?
-// O(n^2), Best case: O(1)
+// O(n^2) - nested for loop
 function areYouHere(arr1, arr2) {
   for (let i=0; i<arr1.length; i++) {
     const el1 = arr1[i];
@@ -22,7 +22,7 @@ function areYouHere(arr1, arr2) {
 }
 
 // Doubler
-// O(n)
+// O(n) - One loop, incrementing by 1
 function doubleArrayValues(array) {
   for (let i=0; i<array.length; i++) {
     array[i] *= 2;
@@ -31,7 +31,7 @@ function doubleArrayValues(array) {
 }
 
 // Naive Search
-// O(n), Best case: O(1)
+// O(n) - One loop, incrementing by 1
 function naiveSearch(array, item) {
   for (let i=0; i<array.length; i++) {
     if (array[i] === item) {
@@ -42,7 +42,7 @@ function naiveSearch(array, item) {
 
 
 // Computing fibonaccis
-// O(n)
+// O(n) - One loop, incrementing by 1
 function generateFib(num) {
   let result = [];
   for (let i = 1; i <= num; i++) {
@@ -70,7 +70,7 @@ function generateFib(num) {
 }
 
 // An Efficient Search
-// O(log(n))
+// O(log(n)) - Loop halves the array each iteration
 function efficientSearch(array, item) {
   let minIndex = 0;
   let maxIndex = array.length - 1;
@@ -95,13 +95,13 @@ function efficientSearch(array, item) {
 }
 
 // Random element
-// O(1)
+// O(1) - Same amount of time no matter what the input
 function findRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Is it prime?
-// O(n)
+// O(n) - One loop, incrementing by 1
 function isPrime(n) {
   // if n is less than 2 or a decimal, it's not prime
   if (n < 2 || n % 1 != 0) {
@@ -116,7 +116,7 @@ function isPrime(n) {
 }
 
 // Counting Sheep
-// O(n)
+// O(n) - One loop, incrementing by 1
 function countSheep(num) {
   //stopping condition of base case
   if (num === 0) {
@@ -131,7 +131,7 @@ function countSheep(num) {
 }
 
 // Array Double
-// O(n)
+// O(n) - One loop, incrementing by 1
 function double_all(arr) {
   if (!arr.length) {
     return [];
@@ -140,7 +140,7 @@ function double_all(arr) {
 }
 
 // Reverse String
-// O(n)
+// O(n) - One loop, incrementing by 1
 function reverseString(str) {
   if (str.length < 2) {
     return str;
@@ -149,7 +149,7 @@ function reverseString(str) {
 }
 
 // Triangular Number
-// O(n)
+// O(n) - One loop, incrementing by 1
 function triangle(n) {
   if (n < 2)
     return n;
@@ -157,7 +157,7 @@ function triangle(n) {
 }
 
 // String Splitter
-// O(n)
+// O(n) - One loop, incrementing by 1
 function split(str, sep) {
   let idx = str.indexOf(sep);
   if (idx == -1)
@@ -172,7 +172,7 @@ function split(str, sep) {
 }
 
 // Binary Representation
-// O(log(n))
+// O(log(n)) - Loop cuts the number in half each iteration
 function convertToBinary(num) {
   if (num>0) {
     let binary = Math.floor(num%2); //save the reminder in binary
@@ -185,7 +185,7 @@ function convertToBinary(num) {
 }
 
 // Factorial
-// O(n^2) ?
+// O(n) - One loop, incrementing by 1
 function factorial(n) {
   // Base Case - when n is equal to 0, we stop the recursion
   if (n === 0) {
@@ -197,7 +197,7 @@ function factorial(n) {
 }
 
 // Fibonacci
-// O(2^n)
+// O(2^n) - Multiple nested loops inside each recursive call
 function fibonacci(n) {
   // Base case
   if (n <= 0) {
@@ -212,7 +212,7 @@ function fibonacci(n) {
 }
 
 // Anagrams
-// O(2^n)
+// O(2^n) - Multiple nested loops inside each recursive call
 function anagrams(prefix, str) {
   if (str.length <= 1) {
     console.log(`The anagram is ${prefix}${str}`);
@@ -227,7 +227,7 @@ function anagrams(prefix, str) {
 }
 
 //Animal Hierarchy
-// O(n^3)
+// O(n^3) - 3 Nested loops
 function traverse(animalHierarchy, parent) {
   let node = {};
   animalHierarchy.filter(item => item.parent === parent)
@@ -236,7 +236,7 @@ function traverse(animalHierarchy, parent) {
 }
 
 // Organization Chart
-// O(n^2)
+// O(n^2) - 2 Nested loops
 function traverseA(data, depth = 0) {
   let indent = ' '.repeat(depth * 4);
   Object.keys(data).forEach(key => {
@@ -250,4 +250,94 @@ function traverseB(node, indent=0) {
     console.log(' '.repeat(indent), key);
     traverseB(node[key], indent + 4);
   }
+}
+
+// Counting Sheep
+// O(n) - One loop, incrementing by 1
+function countSheepLoop(num) {
+  for (let i=num; i>0; i--) {
+    console.log(`counting sheeps ${i}`);
+  }
+}
+
+// Double All
+// O(n) - One loop, incrementing by 1
+function double_all2(arr) {
+  let ret = Array(arr.length);
+  for (let i = 0; i < arr.length; ++i) {
+    ret[i] = arr[i] * 2;
+  }
+  return ret;
+}
+
+// Reverse Tail
+// O(n) - One loop, incrementing by 1 character
+function reverse_tail(str) {
+  let accumulator = '';
+  while (str !== '') {
+    accumulator = str[0] + accumulator;
+    str = str.slice(1);
+  }
+  return accumulator;
+}
+
+// Triangle
+// O(n) - One loop, incrementing by 1
+function triangle2(n) {
+  let tot = 0;
+  for (let i = 1; i <= n; ++i) {
+    tot += n;
+  }
+  return tot;
+}
+
+// Split
+// O(n) - indexOf only runs once on each character
+function split2(str, sep) {
+  let ret = [];
+  while (true) {
+    let idx = str.indexOf(sep);
+    if (idx == -1) break;
+    ret.push(str.slice(0, idx));
+    str = str.slice(idx + sep.length);
+  }
+  ret.push(str);
+  return ret;
+}
+
+// Binary Representation
+// O(log(n)) - One loop, cuts num in half each time
+function convertToBinaryIter(num) {
+  let binary = '';
+  while (num>0) {
+    let rem = Math.floor(num%2);
+    binary = rem + binary;
+    num = Math.floor(num/2);
+  }
+  return binary;
+}
+
+// Factorial
+// O(n) - One loop, incrementing by 1
+function factorialIterative(number) {
+  let fact = 1;
+  for (let i = 1; i <= number; i++) {
+    fact *= i;
+  }
+  return fact;
+}
+
+// Fibonacci
+// O(n) - One loop, incrementing by 1
+function fibonacciIterative(number) {
+  let num1 = 1;
+  let num2 = 0;
+  let fib = null;
+  while (number > 0) {
+    fib = num1;
+    num1 = num1+num2;
+    num2 = fib;
+    number--;
+  }
+  return num2;
 }
