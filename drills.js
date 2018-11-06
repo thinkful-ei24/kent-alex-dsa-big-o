@@ -40,6 +40,15 @@ function naiveSearch(array, item) {
   }
 }
 
+// Creating pairs:
+// O(n^2) - Nested For loops
+function createPairs(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i+1; j < arr.length; j++) {
+      console.log(arr[i] + ', ' +  arr[j]);
+    }
+  }
+}
 
 // Computing fibonaccis
 // O(n) - One loop, incrementing by 1
